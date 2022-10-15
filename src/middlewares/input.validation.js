@@ -1,4 +1,4 @@
-const inputValidation = (req, res) => {
+const inputValidation = (req, res, next) => {
   const { name } = req.body;
 
   if (!name) {
@@ -8,6 +8,7 @@ const inputValidation = (req, res) => {
   if (name.length <= 4) {
     return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
   }
+  next();
 };
 
 module.exports = inputValidation;
